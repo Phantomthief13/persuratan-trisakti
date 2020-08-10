@@ -14,27 +14,39 @@ class ChartController extends Controller
     public function index()
     {
 
-        $results = DB::table('disposisi')
+        $selesai = DB::table('disposisi')
              ->addSelect(DB::raw('COUNT("*") as Total'))
-             ->groupBy(DB::raw("status"))
+             ->where(DB::raw('status'), 'Selesai')
              ->where(DB::raw('Penerima'), Session::get('jabatan'))
              ->get();
-
+             
+        $belum = DB::table('disposisi')
+             ->addSelect(DB::raw('COUNT("*") as Belum'))
+             ->where(DB::raw('status'), 'Belum')
+             ->where(DB::raw('Penerima'), Session::get('jabatan'))
+             ->get();
+             
         $categories = ['Belum Selesai', 'Selesai'];
-        $laporan = [];
-        foreach($results as $r)
-        {
-            $laporan[] = $r->Total;
-        }
-        
-        $Summary = $laporan[0]+$laporan[1];
-        
-        $persentase = $laporan[1] / $Summary * 100;
+        $laporan1 = [];
+        $laporan2 = [];  
 
-        // dd($laporan);
-        // dd($results);
-        // dd($categories);
-        // dd($persentase);
-        return view('/chart/chart', compact('results', 'categories','laporan', 'Summary', 'persentase'));
+        foreach($belum as $b)
+        {
+            $laporan1[0] =  $b->Belum;
+        }
+    
+        foreach($selesai as $s)
+        {
+            $laporan2[0] = $s->Total;  
+        }
+        $Summary = $laporan1[0] + $laporan2[0];
+        
+        if($laporan2[0] != 0)
+            $persentase = $laporan2[0] / $Summary * 100;
+        else
+            $persentase = 0;
+       
+        // dd($persentase);  
+        return view('/chart/chart', compact('selesai', 'belum', 'categories','laporan1', 'laporan2', 'Summary', 'persentase'));
     }
 }

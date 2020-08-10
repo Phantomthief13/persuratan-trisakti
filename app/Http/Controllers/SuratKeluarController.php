@@ -24,6 +24,7 @@ class SuratKeluarController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'nomor' => 'required',
             'ditujukan' => 'required',
@@ -111,28 +112,8 @@ class SuratKeluarController extends Controller
     public function detail($id)
     {
         $keluar = SuratKeluar::find($id);
-        // membaca data dari form
-        $nomor = $keluar->nomor;
-        $tanggal = $keluar->tanggal;
-        $perihal = $keluar->perihal;
-        $ditujukan = $keluar->ditujukan;
-        $asal = $keluar->asal;
-        $isi = $keluar->isi;
-        // memanggil dan membaca template dokumen yang telah kita buat
-        $document = file_get_contents("surat.rtf");
-        // isi dokumen dinyatakan dalam bentuk string
-        $document = str_replace("#NOMOR", $nomor, $document);
-        $document = str_replace("#TANGGAL", $tanggal, $document);
-        $document = str_replace("#PERIHAL", $perihal, $document);
-        $document = str_replace("#DITUJUKAN", $ditujukan, $document);
-        $document = str_replace("#ASAL", $asal, $document);
-        $document = str_replace("#ISI", $isi, $document);
-        // header untuk membuka file output RTF dengan MS. Word
-        header("Content-type: application/msword");
-        header("Content-disposition: inline; filename=suratIjin.doc");
-        header("Content-length: ".strlen($document));
-        echo $document;
-        return redirect('/surat_keluar/detail', compact('keluar'));
+        $verifikasi = verifikasi::where('nomor', $keluar->nomor);
+        return view('/surat_keluar/detail', compact('keluar', 'verifikasi'));
     }
 
     public function delete($id)

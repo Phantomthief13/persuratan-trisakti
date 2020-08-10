@@ -24,6 +24,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/disposisi">Disposisi</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/chart">Laporan</a>
+      </li>
       @elseif(Session::get('privilege') == 'Pimpinan')
       <li class="nav-item">
         <a class="nav-link" href="/disposisi">Disposisi</a>
@@ -36,6 +39,7 @@
         <a class="nav-link" href="/disposisi">Disposisi</a>
       </li>
       @endif
+      
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <a href="/logout" class="btn btn-outline-dark my-2 my-sm-0" type="submit">Logout</a>

@@ -89,16 +89,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Info Surat Masuk</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Info Verifikasi</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <li>Untuk memasukan data surat masuk, dapat menekan tombol tambah surat yang ada di sebelah kiri atas layar</li>
-        <li>Pastikan data surat benar sebelum mengirim surat</li>
-        <li>Kirim surat untuk melanjutkan surat pada pejabat penerima surat</li>  
-        <li></li>
+      <li>Untuk memberikan verifikasi, Anda dapat menekan tombol + yang terdapat di kolom verifikasi</li>
+        <li>Pastikan data verifikasi telah terisi dengan benar sebelum menekan tombol simpan</li>
+        <li>Data verifikasi dapat dilakukan edit dan hapus sesuai dengan kebutuhan</li> 
+        <li>Anda dapat melihat status surat yang telah diverifikasi pada kolom status</li>
+        <li>Anda dapat melihat surat yang telah diverifikasi dengan menekan tombol detail</li>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

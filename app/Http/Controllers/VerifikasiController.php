@@ -16,13 +16,13 @@ class VerifikasiController extends Controller
         $verifikasi = verifikasi::all()
             ->where('pemeriksa', Session::get('jabatan'));
 
-        return view('/verifikasi/verifikasi', compact('verifikasi'));
+        return view('/Verifikasi/Verifikasi', compact('verifikasi'));
     }
 
     public function verif($id)
     {
         $verifikasi = verifikasi::find($id);
-        return view('/verifikasi/form_tambah', compact('verifikasi'));
+        return view('/Verifikasi/form_tambah', compact('verifikasi'));
     }
 
     public function store($id, Request $request)
@@ -50,18 +50,25 @@ class VerifikasiController extends Controller
     {
         $verifikasi = verifikasi::find($id);
 
-        return view('/verifikasi/form_edit', compact('verifikasi'));
+        return view('/Verifikasi/form_edit', compact('verifikasi'));
     }
 
     public function update($id, Request $request)
     {
-        $verifikasi = verifikas::find($id);
+        $verifikasi = verifikasi::find($id);
 
         $verifikasi->catatan = $request->catatan;
         $verifikasi->status = $request->status;
 
         $verifikasi->save();
 
-        return view('/disposisi/disposisi');
+        return redirect('/verifikasi');
+    }
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        $verifikasi = verifikasi::all()
+            ->where('nomor', $cari);
+        return view('/Verifikasi/Verifikasi', compact('cari', 'verifikasi'));
     }
 }

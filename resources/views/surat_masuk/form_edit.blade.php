@@ -11,7 +11,6 @@
     <h2 class="card-title text-center">FORM EDIT SURAT MASUK</h2>
     <form method="post" action="/surat_masuk/update/{{$surat->id}}">
     {{ csrf_field() }}
-    {{ method_field('PUT') }}
     <div class="form-group row">
         <label for="inputPassword" class="col-sm-2 col-form-label">Nomor Surat</label>
         <div class="col-sm-10">

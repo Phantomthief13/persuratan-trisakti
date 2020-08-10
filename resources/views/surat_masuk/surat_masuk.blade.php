@@ -53,7 +53,11 @@
       <td>{{$s->perihal}}</td>
       <td>{{$s->ditujukan}}</td>
       <td>
+      @if($s->status == "")
         <a href="/surat_masuk/edit/{{$s->id}}" class="badge badge-success">Edit</a>
+      @else
+      <a class="badge badge-success">Edit</a>
+      @endif
         <a href="/surat_masuk/delete/{{$s->id}}" class="badge badge-danger">Hapus</a>
       </td>
       <td>
@@ -65,17 +69,25 @@
         </a>
       </td>
       <td>
+      @if($s->status == "")
         <a href="/surat_masuk/kirim/{{$s->id}}" class="badge badge-light">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-forward" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M9.502 5.513a.144.144 0 0 0-.202.134V6.65a.5.5 0 0 1-.5.5H2.5v2.9h6.3a.5.5 0 0 1 .5.5v1.003c0 .108.11.176.202.134l3.984-2.933a.51.51 0 0 1 .042-.028.147.147 0 0 0 0-.252.51.51 0 0 1-.042-.028L9.502 5.513zM8.3 5.647a1.144 1.144 0 0 1 1.767-.96l3.994 2.94a1.147 1.147 0 0 1 0 1.946l-3.994 2.94a1.144 1.144 0 0 1-1.767-.96v-.503H2a.5.5 0 0 1-.5-.5v-3.9a.5.5 0 0 1 .5-.5h6.3v-.503z"/>
         </svg>
-        </a>  
+        </a>
+      @else
+      <a class="badge badge-light">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-forward" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M9.502 5.513a.144.144 0 0 0-.202.134V6.65a.5.5 0 0 1-.5.5H2.5v2.9h6.3a.5.5 0 0 1 .5.5v1.003c0 .108.11.176.202.134l3.984-2.933a.51.51 0 0 1 .042-.028.147.147 0 0 0 0-.252.51.51 0 0 1-.042-.028L9.502 5.513zM8.3 5.647a1.144 1.144 0 0 1 1.767-.96l3.994 2.94a1.147 1.147 0 0 1 0 1.946l-3.994 2.94a1.144 1.144 0 0 1-1.767-.96v-.503H2a.5.5 0 0 1-.5-.5v-3.9a.5.5 0 0 1 .5-.5h6.3v-.503z"/>
+        </svg>
+        </a>
+      @endif
       </td>
       <td>
           @if($s->status == "")
           <span class="badge badge-light">Belum Dikirim</span>
           @else
-          <span class="badge badge-success"> Terkirim</span>
+          <span class="badge badge-success">Terkirim</span>
           @endif
       </td>
     </tr>
@@ -98,10 +110,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <li>Untuk memasukan data surat masuk, dapat menekan tombol tambah surat yang ada di sebelah kiri atas layar</li>
-        <li>Pastikan data surat benar sebelum mengirim surat</li>
-        <li>Kirim surat untuk melanjutkan surat pada pejabat penerima surat</li>  
-        <li></li>
+      <li>Untuk memasukan data surat masuk, Anda dapat menekan tombol +Tambah Surat yang terdapat di sebelah kiri layar</li>
+        <li>Pastikan data surat masuk telah terisi dengan benar sebelum menekan tombol simpan</li>
+        <li>Data surat masuk dapat dilakukan edit dan hapus sesuai dengan kebutuhan</li> 
+        <li>Anda dapat mengirim data surat masuk untuk didisposisikan dengan menekan tombol kirim</li>
+        <li>Anda dapat melihat data surat masuk yang telah diinput dengan menekan tombol detail</li>
+        <li>Anda dapat mencari data surat masuk berdasarkan Nomor Surat</li>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

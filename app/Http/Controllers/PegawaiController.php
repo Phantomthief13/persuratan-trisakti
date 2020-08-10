@@ -24,6 +24,7 @@ class PegawaiController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'nip' => 'required',
             'nama' => 'required',
@@ -93,4 +94,12 @@ class PegawaiController extends Controller
         $pegawai->delete();
         return redirect('/pegawai');
     }
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        $pegawai = pegawai::all()
+            ->where('NIP', $cari);
+        return view('/pegawai/pegawai', compact('cari', 'pegawai'));
+    }
 }
+

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\disposisi;
 use App\pegawai;
 
@@ -13,34 +14,19 @@ class DisposisiController extends Controller
 {
     public function index()
     {
-        if(Session::get('privilege') == 'Pimpinan')
-        {
-            $disposisi = disposisi::all()
-                ->where('ditujukan', Session::get('jabatan'));
-            echo Session::get('jabatan');
-            return view('/disposisi/disposisi', compact('disposisi'));
-        }
-        elseif(Session::get('privilege') == 'Pegawai')
-        {
-            $disposisi = disposisi::all()
-                ->where('Penerima', Session::get('jabatan'));
-                echo Session::get('jabatan');
-            return view('/disposisi/disposisi', compact('disposisi'));
-        }
-        else
-        {    
-            $disposisi = disposisi::all()
-                ->where('Penerima', Session::get('jabatan'));
-                echo Session::get('jabatan');
-            return view('/disposisi/disposisi', compact('disposisi'));
-        }
+            $disposisi = DB::table('disposisi')
+             ->where(DB::raw('ditujukan'), Session::get('jabatan'))
+             ->orwhere(DB::raw('Penerima'), Session::get('jabatan'))
+             ->get();
+
+            return view('/Disposisi/disposisi', compact('disposisi'));
     }
 
     public function tambah($id)
     {
         $disposisi = disposisi::find($id);
         $pegawai = pegawai::all();
-        return view('/disposisi/form_tambah', compact('disposisi', 'pegawai'));
+        return view('/Disposisi/form_tambah', compact('disposisi', 'pegawai'));
     }
 
     public function store(Request $request, $id)
@@ -55,7 +41,7 @@ class DisposisiController extends Controller
 
         $disposisi->penerima = $request->penerima;
         $disposisi->isi = $request->isi;
-        $disposisi->status = $request->status;
+        // $disposisi->status = $request->status;
 
         $disposisi->save();
 
@@ -80,7 +66,7 @@ class DisposisiController extends Controller
     {
         $disposisi = disposisi::find($id);
         $pegawai = pegawai::all();
-        return view('/disposisi/form_edit', compact('disposisi', 'pegawai'));
+        return view('/Disposisi/form_edit', compact('disposisi', 'pegawai'));
     }
 
     public function update($id, Request $request)
@@ -99,6 +85,13 @@ class DisposisiController extends Controller
     public function detail($id)
     {
         $disposisi = disposisi::find($id);
-        return view('/disposisi/detail', compact('disposisi'));
+        return view('/Disposisi/detail', compact('disposisi'));
+    }
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        $disposisi = disposisi::all()
+            ->where('nomor', $cari);
+        return view('/Disposisi/disposisi', compact('cari', 'disposisi'));
     }
 }

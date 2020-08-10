@@ -83,6 +83,7 @@ class SuratMasukController extends Controller
             'ditujukan' => $surat->ditujukan,
             'perihal' => $surat->perihal,
             'lampiran' => $surat->lampiran,
+            'status' => 'Belum'
         ];
 
         $surat->status = "TRUE";

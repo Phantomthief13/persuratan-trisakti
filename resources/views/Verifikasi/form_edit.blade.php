@@ -50,7 +50,9 @@
     <div class="form-group row">
     <label for="" class="col-sm-2 col-form-label">Detail</label>
     <div class="col-sm-2">
-        <button class="form-control" class="btn btn-light">Preview</button>
+                
+          <a href="/Document/{{$verifikasi->id}}" type="submit" class="badge badge-light">Preview</a>
+        
     </div>
     </div>
     <div class="form-group row">

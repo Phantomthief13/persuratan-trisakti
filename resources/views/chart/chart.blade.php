@@ -8,7 +8,7 @@
 <div class="container mx-auto mt-5">
     <div class="card">
     <div class="card-header">
-        <h2 class="text-center">Laporan Kinerja Pegawai</h2>
+        <h2 class="text-center">Hasil Kinerja Pegawai</h2>
     </div>
     <div class="card-body">
         <div id="chart"></div>
@@ -21,8 +21,8 @@
     <div class="card-body">
     <div class="row mt-5">
             <div class="col-12 text-center">
-            <h3>Total               = {{$Summary}} Surat</h3>
-            <h3>Penilaian Kinerja   = {{$persentase}} %</h3>
+                <h3>Total               = {!!json_encode($Summary)!!} Surat</h3>
+                <h3>Penilaian Kinerja   = {{$persentase}} %</h3>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
         },
         series: [{
             name: 'Disposisi',
-            data: {!!json_encode($laporan)!!}
+            data: [{!!json_encode($laporan1)!!}, {!!json_encode($laporan2)!!}]  
 
         }]
     });

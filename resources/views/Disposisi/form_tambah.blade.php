@@ -10,6 +10,15 @@
   <div class="card-header">
     FORM DISPOSISI
   </div>
+  @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
   <div class="card-body">
   <form method="post" action="/disposisi/store/{{$disposisi->id}}">
   {{ csrf_field() }}
@@ -59,7 +68,8 @@
         <input type="text" class="form-control plain-text" name="isi">
         </div>
     </div>
-    @if(Session::get('privilege') == 'Pegawai')
+    @if($disposisi->catatan == "")
+    @else
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Status</label>
         <div class="col-sm-10">

@@ -19,13 +19,21 @@ Route::get('/logout', 'LoginController@logout');
 
 
 Route::get('/surat_masuk', 'SuratMasukController@index');
-Route::post('/surat_masuk/store', 'SuratMasukController@store');
+// Tampilan Form Tambah Surat
 Route::get('/surat_masuk/tambah', 'SuratMasukController@create');
+// Proses Form Tambah
+Route::post('/surat_masuk/store', 'SuratMasukController@store');
+// Tampilan Form Edit Surat
 Route::get('/surat_masuk/edit/{id}', 'SuratMasukController@edit');
-Route::put('/surat_masuk/update/{id}', 'SuratMasukController@update');
+// Proses Form Edit Surat
+Route::post('/surat_masuk/update/{id}', 'SuratMasukController@update');
+// Proses Delete Surat
 Route::get('/surat_masuk/delete/{id}', 'SuratMasukController@delete');
+// Tampilan Detail Surat Masuk
 Route::get('surat_masuk/detail/{id}', 'SuratMasukController@detail');
+// Proses Kirim Surat Masuk
 Route::get('/surat_masuk/kirim/{id}', 'SuratMasukController@kirim');
+// Proses cari surat masuk
 Route::get('surat_masuk/cari', 'SuratMasukController@cari');
 
 Route::get('/surat_masuk/Download/{id}', 'SuratMasukController@download')->name('download');

@@ -9,9 +9,15 @@
 <div class="card">
   <div class="card-body">
     <h2 class="card-title text-center">FORM TAMBAH SURAT</h2>
-    @foreach($errors->all() as $error)
-        {{ $error }}
-    @endforeach
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form action="/surat_masuk/store" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="form-group row">

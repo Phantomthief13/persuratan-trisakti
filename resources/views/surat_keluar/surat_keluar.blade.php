@@ -52,17 +52,30 @@
       <td>{{$k->tanggal}}</td>
       <td>{{$k->perihal}}</td>
       <td>
+        @if($k->status == 'Setuju')  
+        <a class="badge badge-success">Edit</a>
+        @else
         <a href="/surat_keluar/edit/{{$k->id}}" class="badge badge-success">Edit</a>
+        @endif
         <a href="/surat_keluar/delete/{{$k->id}}" class="badge badge-danger">Hapus</a>
       </td>
       <td>
-        <a class="badge badge-light" href="/surak_keluar/detail/{{$k->id}}">
+        <a class="badge badge-light" href="/surat_keluar/detail/{{$k->id}}">
         <svg  width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
         <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
         </svg>
         </a>
       </td>
+      @if($k->status == 'Setuju')
+      <td>
+        <a class="badge badge-light">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-forward" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M9.502 5.513a.144.144 0 0 0-.202.134V6.65a.5.5 0 0 1-.5.5H2.5v2.9h6.3a.5.5 0 0 1 .5.5v1.003c0 .108.11.176.202.134l3.984-2.933a.51.51 0 0 1 .042-.028.147.147 0 0 0 0-.252.51.51 0 0 1-.042-.028L9.502 5.513zM8.3 5.647a1.144 1.144 0 0 1 1.767-.96l3.994 2.94a1.147 1.147 0 0 1 0 1.946l-3.994 2.94a1.144 1.144 0 0 1-1.767-.96v-.503H2a.5.5 0 0 1-.5-.5v-3.9a.5.5 0 0 1 .5-.5h6.3v-.503z"/>
+        </svg>
+        </a>  
+      </td>
+      @else
       <td>
         <a href="/surat_keluar/send/{{$k->id}}" class="badge badge-light">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-forward" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -70,17 +83,18 @@
         </svg>
         </a>  
       </td>
+      @endif
       @if($k->status == '')
       <td>
-        <a href="/verifikasi/tambah" class="badge badge-light">Belum diperiksa</a>
+        <a class="badge badge-light">Belum diperiksa</a>
       </td>
       @elseif($k->status == 'Tolak')
       <td>
-        <a href="/verifikasi/tambah" class="badge badge-danger">Ditolak</a>
+        <a class="badge badge-danger">Ditolak</a>
       </td>
       @else
       <td>
-        <a href="/verifikasi/tambah" class="badge badge-success">Disetujui</a>
+        <a class="badge badge-success">Disetujui</a>
       </td>
       @endif
       <td>
@@ -104,16 +118,19 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Info Surat Masuk</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Info Surat Keluar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <li>Untuk memasukan data surat masuk, dapat menekan tombol tambah surat yang ada di sebelah kiri atas layar</li>
-        <li>Pastikan data surat benar sebelum mengirim surat</li>
-        <li>Kirim surat untuk melanjutkan surat pada pejabat penerima surat</li>  
-        <li></li>
+      <li>Untuk memasukan data surat keluar, Anda dapat menekan tombol +Buat Surat yang terdapat di sebelah kiri layar</li>
+        <li>Pastikan data surat keluar telah terisi dengan benar sebelum menekan tombol simpan</li>
+        <li>Data surat keluar dapat dilakukan edit dan hapus sesuai dengan kebutuhan</li> 
+        <li>Anda dapat mengirim data surat keluar untuk diverifikasi dengan menekan tombol kirim</li>
+        <li>Anda dapat melihat status surat keluar yang telah dikirim pada kolom status</li>
+        <li>Anda dapat melihat data surat keluar yang telah diinput dengan menekan tombol detail</li>
+        <li>Anda dapat mencari data surat masuk berdasarkan Nomor Surat</li>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

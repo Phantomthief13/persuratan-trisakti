@@ -33,7 +33,6 @@
       </div>
     </form>
     <tr>
-      <th scope="col">No</th>
       <th scope="col">NIP</th>
       <th scope="col">Nama</th>
       <th scope="col">Jabatan</th>
@@ -44,7 +43,6 @@
   <tbody>
   @foreach($pegawai as $p)
     <tr>
-      <th scope="row">1</th>
       <td>{{$p->NIP}}</td>
       <td>{{$p->nama}}</td>
       <td>{{$p->jabatan}}</td>
@@ -75,16 +73,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Info Surat Masuk</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Info Pegawai</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <li>Untuk memasukan data surat masuk, dapat menekan tombol tambah surat yang ada di sebelah kiri atas layar</li>
-        <li>Pastikan data surat benar sebelum mengirim surat</li>
-        <li>Kirim surat untuk melanjutkan surat pada pejabat penerima surat</li>  
-        <li></li>
+        <li>Untuk memasukan data pegawai, Anda dapat menekan tombol +Tambah Pegawai yang terdapat di sebelah kiri layar</li>
+        <li>Pastikan data pegawai telah terisi dengan benar sebelum menekan tombol simpan</li>
+        <li>Data pegawai dapat dilakukan edit dan hapus sesuai dengan kebutuhan</li>  
+        <li>Anda dapat melihat data pegawai yang telah diinput dengan menekan tombol detail</li>
+        <li>Anda dapat mencari data pegawai berdasarkan NIP</li>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

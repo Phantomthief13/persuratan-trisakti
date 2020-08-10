@@ -36,7 +36,6 @@
       <th scope="col">Asal Surat</th>
       <th scope="col">Perihal</th>
       <th scope="col">Disposisi</th>
-
       <th scope="col">Opsi</th>
       <th scope="col">Status</th>
       <th scope="col">Detail</th>
@@ -47,8 +46,8 @@
     <tr>
       <td>{{$d->nomor}}</td>
       <td>{{$d->asal}}</td>
-      <td>{{$d->perihal}}</td>
-      @if(Session::get('privilege') == 'Pimpinan')
+      <td>{{$d->perihal}}</td>    
+      @if($d->isi == '')
       <td>
         <a href="/disposisi/tambah/{{$d->id}}" class="badge badge-light">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -117,16 +116,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Info Surat Masuk</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Info Disposisi</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <li>Untuk memasukan data surat masuk, dapat menekan tombol tambah surat yang ada di sebelah kiri atas layar</li>
-        <li>Pastikan data surat benar sebelum mengirim surat</li>
-        <li>Kirim surat untuk melanjutkan surat pada pejabat penerima surat</li>  
-        <li></li>
+      <li>Untuk memeriksa disposisi, Anda dapat menekan tombol + yang terdapat di kolom disposisi</li>
+        <li>Pastikan data disposisi telah terisi dengan benar sebelum menekan tombol simpan</li>
+        <li>Data disposisi dapat dilakukan edit dan hapus sesuai dengan kebutuhan</li> 
+        <li>Anda dapat melihat status disposisi yang telah tersimpan pada kolom status</li>
+        <li>Anda dapat melihat data disposisi yang telah diinput dengan menekan tombol detail</li>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
