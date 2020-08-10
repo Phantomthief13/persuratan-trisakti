@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('tittle')
-    BUAT DISPOSISI
+    Edit Pegawai
 @endsection
 
 @section('content')

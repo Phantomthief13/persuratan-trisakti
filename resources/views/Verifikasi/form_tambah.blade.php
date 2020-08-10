@@ -48,15 +48,6 @@
     </div>
     </div>
     <div class="form-group row">
-    <label for="" class="col-sm-2 col-form-label">Detail</label>
-    <div class="col-sm-2">
-        <form action="/Document/{{$verifikasi->id}}" method="POST">
-          {{csrf_field()}}
-          <button type="submit" class="badge badge-light">cetak</button>
-        </form>
-    </div>
-    </div>
-    <div class="form-group row">
     <label for="" class="col-sm-2 col-form-label">Status</label>
     <div class="col-sm-2">
         <input type="checkbox" name="status" value="Setuju">Setuju</input>
@@ -80,7 +71,7 @@
     @endif
     <div class="form-group mx-auto">
         <button class="btn btn-primary" type="submit"> Simpan</button>
-        <a href="/surat_masuk" class="btn btn-dark">Kembali</a>
+        <a href="/verifikasi" class="btn btn-dark">Kembali</a>
     </div>
     </form>
   </div>

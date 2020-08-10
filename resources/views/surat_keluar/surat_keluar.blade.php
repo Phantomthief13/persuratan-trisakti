@@ -10,7 +10,7 @@
   <div class="card-header">
   <div class="row">
     <div class="col-md-11">
-    <a href="/" class="btn btn-dark">Kembali</a>
+    <a href="/main" class="btn btn-dark">Kembali</a>
     <a href="/surat_keluar/tambah" class="btn btn-primary">&#43; Buat Surat</a>
     </div>
     <div class="col-md-1">

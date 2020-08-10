@@ -10,7 +10,7 @@
   <div class="card-header">
   <div class="row">
     <div class="col-md-11">
-    <a href="/" class="btn btn-dark">Kembali</a>
+    <a href="/main" class="btn btn-dark">Kembali</a>
     </div>
     <div class="col-md-1">
     <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Info</a>

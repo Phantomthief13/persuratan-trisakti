@@ -71,4 +71,10 @@ class VerifikasiController extends Controller
             ->where('nomor', $cari);
         return view('/Verifikasi/Verifikasi', compact('cari', 'verifikasi'));
     }
+
+    public function detail($id)
+    {
+        $verifikasi = verifikasi::find($id);
+        return view('/Verifikasi/detail', compact('verifikasi'));
+    }
 }

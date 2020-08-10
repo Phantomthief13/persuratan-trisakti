@@ -8,7 +8,7 @@
 <div class="container mt-5">
 <div class="card">
   <div class="card-header">
-    Detail Pegawai
+    DETAIL PEGAWAI
   </div>
   <div class="card-body">
   <div class="form-group row">
